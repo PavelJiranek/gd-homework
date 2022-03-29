@@ -12,19 +12,19 @@ const Dashboard: React.FC = () => {
 
   return (
     <Page>
-      <Typography variant="h3" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         My Dashboard - {dateFilterDisplayValue}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <FilterBar selectedOption={filterState.selectedFilterOption} onApply={handleFilterApply} />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <DashboardItem title="Product revenue by month">
             <ProductRevenueChart filters={[dateFilter]} />
           </DashboardItem>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <DashboardItem title="Custom component" />
         </Grid>
       </Grid>

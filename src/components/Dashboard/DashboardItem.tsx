@@ -9,6 +9,7 @@ const styles = {
   paper: {
     paddingX: 2,
     paddingY: 4,
+    minHeight: 230,
   },
   title: { marginBottom: 2 },
 };
