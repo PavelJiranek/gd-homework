@@ -1,25 +1,23 @@
 import React from 'react';
 
 import Page from '../components/Page';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { DashboardItem } from '../components/Dashboard/DashboardItem';
 import { ProductRevenueChart } from '../components/Dashboard/ProductRevenueChart';
-
-const styles = {
-  filterBar: {
-    padding: 2,
-  },
-};
+import { FilterBar } from '../components/Dashboard/FilterBar';
+import { useDateFilter } from '../hooks/useDateFilter';
 
 const Dashboard: React.FC = () => {
+  const { filterState, handleFilterApply, dateFilterDisplayValue } = useDateFilter();
+
   return (
     <Page>
-      <Typography variant="h2" gutterBottom>
-        My Dashboard
+      <Typography variant="h3" gutterBottom>
+        My Dashboard - {dateFilterDisplayValue}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Paper sx={styles.filterBar}>Filter bar</Paper>
+          <FilterBar selectedOption={filterState.selectedFilterOption} onApply={handleFilterApply} />
         </Grid>
         <Grid item xs={8}>
           <DashboardItem title="Product revenue by month">
