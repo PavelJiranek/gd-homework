@@ -6,6 +6,7 @@ import { DashboardItem } from '../components/Dashboard/DashboardItem';
 import { ProductRevenueChart } from '../components/Dashboard/ProductRevenueChart';
 import { FilterBar } from '../components/Dashboard/FilterBar';
 import { useDateFilter } from '../hooks/useDateFilter';
+import { ProductRevenueCard } from '../components/Dashboard/ProductRevenueCard';
 
 const Dashboard: React.FC = () => {
   const { filterState, handleFilterApply, dateFilter, dateFilterDisplayValue } = useDateFilter();
@@ -20,12 +21,14 @@ const Dashboard: React.FC = () => {
           <FilterBar selectedOption={filterState.selectedFilterOption} onApply={handleFilterApply} />
         </Grid>
         <Grid item xs={12} md={8}>
-          <DashboardItem title="Product revenue by month">
+          <DashboardItem title="Product Revenue by Month">
             <ProductRevenueChart filters={[dateFilter]} />
           </DashboardItem>
         </Grid>
         <Grid item xs={12} md={4}>
-          <DashboardItem title="Custom component" />
+          <DashboardItem title="Revenue by Product" fullHeight>
+            <ProductRevenueCard filters={[dateFilter]} />
+          </DashboardItem>
         </Grid>
       </Grid>
     </Page>

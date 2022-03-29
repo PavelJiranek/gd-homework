@@ -3,20 +3,21 @@ import React from 'react';
 
 type DashboardItemProps = {
   title: string;
+  fullHeight?: boolean;
 };
 
 const styles = {
   paper: {
     paddingX: 2,
     paddingY: 4,
-    minHeight: 230,
+    minHeight: 350,
   },
   title: { marginBottom: 2 },
 };
 
-export const DashboardItem: React.FC<DashboardItemProps> = ({ title, children }) => {
+export const DashboardItem: React.FC<DashboardItemProps> = ({ title, fullHeight = false, children }) => {
   return (
-    <Paper sx={styles.paper}>
+    <Paper sx={[styles.paper, fullHeight && { height: '100%' }]}>
       <Typography variant="h6" align="center" sx={styles.title}>
         {title}
       </Typography>
