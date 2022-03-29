@@ -2,8 +2,8 @@ import React from 'react';
 
 import Page from '../components/Page';
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   return <Page>Place your content here&hellip;</Page>;
 };
 
-export default Home;
+export default Dashboard;
