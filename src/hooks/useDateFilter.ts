@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react';
-import { DateFilterOption, defaultDateFilterOptions } from '@gooddata/sdk-ui-filters';
+import { DateFilterHelpers, DateFilterOption, defaultDateFilterOptions } from '@gooddata/sdk-ui-filters';
 import { getDateFilterTitle } from '@gooddata/sdk-ui-filters/dist/DateFilter/utils/Translations/DateFilterTitle';
 import { ILocale } from '@gooddata/sdk-ui';
+import { DateDatasets } from '../md/full';
 
 type DateFilterState = {
   selectedFilterOption: DateFilterOption;
@@ -15,6 +16,7 @@ const defaultInitialState = {
 
 export const useDateFilter = (initialState: DateFilterState = defaultInitialState) => {
   const [filterState, setFilterState] = useState<DateFilterState>(initialState);
+  const { selectedFilterOption, excludeCurrentPeriod } = filterState;
 
   const handleFilterApply = useCallback(
     (selectedFilterOption: DateFilterOption, excludeCurrentPeriod: boolean) => {
@@ -31,5 +33,11 @@ export const useDateFilter = (initialState: DateFilterState = defaultInitialStat
     navigator.language as ILocale
   ).toLowerCase();
 
-  return { filterState, handleFilterApply, dateFilterDisplayValue };
+  const dateFilter = DateFilterHelpers.mapOptionToAfm(
+    selectedFilterOption,
+    DateDatasets.Date.ref,
+    excludeCurrentPeriod
+  );
+
+  return { filterState, handleFilterApply, dateFilterDisplayValue, dateFilter };
 };

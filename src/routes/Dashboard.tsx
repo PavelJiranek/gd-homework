@@ -8,7 +8,7 @@ import { FilterBar } from '../components/Dashboard/FilterBar';
 import { useDateFilter } from '../hooks/useDateFilter';
 
 const Dashboard: React.FC = () => {
-  const { filterState, handleFilterApply, dateFilterDisplayValue } = useDateFilter();
+  const { filterState, handleFilterApply, dateFilter, dateFilterDisplayValue } = useDateFilter();
 
   return (
     <Page>
@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
         </Grid>
         <Grid item xs={8}>
           <DashboardItem title="Product revenue by month">
-            <ProductRevenueChart />
+            <ProductRevenueChart filters={[dateFilter]} />
           </DashboardItem>
         </Grid>
         <Grid item xs={4}>
