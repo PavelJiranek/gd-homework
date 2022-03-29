@@ -4,7 +4,7 @@ import { LoadingComponent, useExecutionDataView } from '@gooddata/sdk-ui';
 import { IFilter, newRankingFilter, RankingFilterOperator } from '@gooddata/sdk-model';
 
 import * as Md from '../../md/full';
-import { getRevenue } from './productRevenueUtils';
+import { getRevenue } from './utils/productRevenueUtils';
 
 type ProductRevenueChartProps = {
   filters: IFilter[];
@@ -18,6 +18,7 @@ const styles = {
 
 export const ProductRevenueCard: React.FC<ProductRevenueChartProps> = ({ filters }) => {
   const [revenueType, setRevenueType] = useState<RankingFilterOperator>('TOP');
+
   const { status, result } = useExecutionDataView(
     {
       execution: {

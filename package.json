@@ -44,7 +44,10 @@
         "validate": "yarn prettier && yarn validate-ts && yarn test --watchAll=false"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
     },
     "browserslist": {
         "production": [
@@ -65,6 +68,7 @@
         "@babel/preset-typescript": "^7.16.5",
         "@babel/register": "^7.16.5",
         "@gooddata/catalog-export": "^8.9.0",
+        "@testing-library/react-hooks": "^7.0.2",
         "@types/enzyme": "^3.10.8",
         "@types/express": "^4.17.11",
         "@types/jest": "^26.0.20",
