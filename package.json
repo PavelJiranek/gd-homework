@@ -33,7 +33,11 @@
         "testcafe-backend": "rm -R ./build & yarn build & serve -l 5000 build",
         "testcafe": "cross-env TEST_BACKEND=http://localhost:5000 ./scripts/run-testcafe.js",
         "testcafe-visual": "cross-env TEST_MODE=visual ./scripts/run-testcafe.js",
-        "refresh-md": "node ./scripts/refresh-md.js"
+        "refresh-md": "node ./scripts/refresh-md.js",
+        "prettier": "prettier --check \"src/**/*.{js,ts,tsx,json,css}\"",
+        "prettier:fix": "prettier --write \"src/**/*.{js,ts,tsx,json,css}\"",
+        "validate-ts": "tsc -noEmit",
+        "validate": "yarn prettier && yarn validate-ts"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -79,7 +83,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx|scss)\""
+            "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx|scss)\"",
+            "pre-push": "yarn validate"
         }
     },
     "engines": {
